@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Your grade is {{ score }}.</title>
+</head>
+
+<body>
+<h1>Your grade is {{ score }}.</h1>
+<h3>
+{% if score >= 90 %}
+	優等
+{% elif score >= 80 %}
+	甲等
+{% elif score >= 70 %}
+	乙等
+{% elif score >= 60 %}
+	丙等
+{% else %}
+	GG
+{% endif %}
+</h3>
+</body>
+</html>

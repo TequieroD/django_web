@@ -16,6 +16,16 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
+from authorization import views as auth_views
+from activity.views import *
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^greeting/(?P<name>\w+)$', auth_views.greeting),
+    url(r'^grade/', auth_views.grade),
+    url(r'^filter/', auth_views.filter),
+    url(r'^list_user/', auth_views.list),
+
+    url(r'^activity/summary/$', summary),
+    url(r'^activity/info/$', info),
 ]

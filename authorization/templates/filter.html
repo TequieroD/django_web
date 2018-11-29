@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Template Filter.</title>
+</head>
+
+<body>
+
+<h3>Add Value: {{ add_value|add:2 }}</h3>
+<h3>Add Value(str): {{ add_value_str|add:"2" }}</h3>
+<h3>Add Value(str): {{ add_slashes|addslashes }}</h3>
+<h3>Upper str: {{ upper_str|capfirst }}</h3>
+<h3>remove str: {{ remove_space|cut:" " }}</h3>
+<h3>default str: {{ not_exist_data|default:"66666" }}</h3>
+
+</body>
+</html>
