@@ -15,10 +15,19 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from activity.views import *
+from activity import views as activity_views
+from authorization import views as auth_views
+#from activity.views import *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^activity/summary/$', summary),
-    url(r'^activity/info/$', info),
+    url(r'^activity/summary/$', activity_views.summary),
+    url(r'^activity/info/$', activity_views.info),
+    url(r'^activity/registration/$', activity_views.registration),
+    url(r'^activity/delete/$', activity_views.delete),
+    url(r'^activity/update/$', activity_views.update),
+    #url(r'^activity/create/$', activity_views.create),
+    url(r'^activity/list/$', activity_views.list),
+    url(r'^auth/create/$', auth_views.create_accont),
+    url(r'^auth/listone/$', auth_views.listone),
 ]

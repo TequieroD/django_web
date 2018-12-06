@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>顯示所有資料</title>
+</head>
+<body>
+<form action="/auth/create/" method="POST" name="form1">
+	{% csrf_token %}
+	<div> Enter name : <input type="text" name="username" />
+	<input type="submit" value="Send"/></div>
+	<div>receive data :{{mess}}</div>
+</form>
+</body>
+</html>

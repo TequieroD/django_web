@@ -14,5 +14,5 @@ class authorizationModel(models.Model):
 		db_table = 'authorization'
 
 	def __str__(self):
-		return self.field_name
+		return self.account
 		#return 'account=%s, password=%s, name=%s, line_id=%s' % (self.account, self.password, self.name, self.line_id)
