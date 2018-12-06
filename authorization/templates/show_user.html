@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+  <div class="details">
+    <h2>{{user.account}}</h2>
+    <p>{{user.password}}</p>
+    <p>{{user.name}}</p>
+    <p>{{user.line_id}}</p>
+    <p>{{user.enable}}</p>
+  </div>
+
+  <h4><a href="{% url 'edit_user' user.id %}">編輯</a></h4>
+  <h4><a href="{% url 'delete_user' user.id %}">刪除</a></h4>
+  <h4><a href="/users">返回上一頁</a></h4>
+
+{% endblock content %}

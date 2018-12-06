@@ -1,5 +1,6 @@
 from django.db import models
 import uuid
+from django.urls import reverse
 
 # Create your models here.
 class authorizationModel(models.Model):
@@ -16,3 +17,6 @@ class authorizationModel(models.Model):
 	def __str__(self):
 		return self.account
 		#return 'account=%s, password=%s, name=%s, line_id=%s' % (self.account, self.password, self.name, self.line_id)
+
+	def get_absolute_url(self):
+		return reverse('users')

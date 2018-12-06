@@ -13,7 +13,7 @@ class classSummaryModel(models.Model):
 		db_table = 'class_summary'
 
 	def __str__(self):
-		return self.field_name
+		return self.action_name
 
 class signUpModel(models.Model):
 	id = models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True)
@@ -25,4 +25,4 @@ class signUpModel(models.Model):
 		db_table = 'sign_up'
 
 	def __str__(self):
-		return self.field_name
+		return self.user_id

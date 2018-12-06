@@ -1,0 +1,53 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="{% static 'css/basestyles.css' %}">
+
+  <title>更新活動資料</title>
+</head>
+<body>
+
+  <header>
+    <h1><a href="/activities">Activity List</a></h1>
+  </header>
+
+    <div class="container">
+        <body>
+            <form action="/activity/{{ activity.id }}/edit" method="POST" name="form">
+                <h2>更新活動資料</h2>
+                {% csrf_token %}
+                <table border="1" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <th>編號</th>
+                        <td><input value="{{ activity.id }}" readonly></td>
+                    </tr>
+                    <tr>
+                        <th>活動名稱</th>
+                        <td><input name="action_name" value="{{ activity.action_name }}"></td>
+                    </tr>
+                    <tr>
+                        <th>活動細節</th>
+                        <td><input name="action_detail" value="{{ activity.action_detail }}"></td>
+                    </tr>
+                    <tr>
+                        <th>活動時間</th>
+                        <td><input type="datetime-local" name="action_datetime" value="{{ activity.action_datetime }}"></td>
+                    </tr>
+                    <tr>
+                        <th>狀態</th>
+                        <td><input type="checkbox" name="enable" {% if activity.enable %}checked{% endif %}></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="submit" value="更新資料"></td>
+                    </tr>
+                </table>
+            </form>
+        </body>
+    </div>
+</body>
+</html>

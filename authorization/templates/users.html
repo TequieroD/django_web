@@ -1,30 +1,31 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>顯示所有資料</title>
-	</head>
-	<body>
-		<h2>顯示 Authorization 資料表所有資料</h2>
-		<table border="1" cellpadding="0" cellspacing="0">
-			<th>筆數</th>
-			<th>編號</th>
-			<th>帳號</th>
-			<th>密碼</th>
-			<th>姓名</th>
-			<th>Line ID</th>
-			<th>授權</th>
-			{% for user in users %}
-				<tr>
-					<td>{{ forloop.counter }}</td>
-					<td>{{ user.id }} </td>
-					<td>{{ user.account }} </td>
-					<td>{{ user.password }} </td>
-					<td>{{ user.name }} </td>
-					<td>{{ user.line_id }} </td>
-					<td>{{ user.enable }} </td>
-				</tr>
-			{% endfor %}
-		</table>
-	</body>
-</html>
-	
+{% extends 'base.html' %}
+
+{% block content %}
+<body>
+	<h2>顯示 Authorization 資料表所有資料</h2>
+	<table border="1" cellpadding="0" cellspacing="0">
+		<th>筆數</th>
+		<th>編號</th>
+		<th>帳號</th>
+		<th>密碼</th>
+		<th>姓名</th>
+		<th>Line ID</th>
+		<th>授權</th>
+		<th>編輯</th>
+		<th>刪除</th>
+		{% for user in object_list %}
+			<tr>
+				<td>{{ forloop.counter }}</td>
+				<td><a href="{% url 'show_user' user.id %}">{{ user.id }}</a></td>
+				<td>{{ user.account }} </td>
+				<td>{{ user.password }} </td>
+				<td>{{ user.name }} </td>
+				<td>{{ user.line_id }} </td>
+				<td>{{ user.enable }} </td>
+				<td><a href="{% url 'edit_user' user.id %}">編輯</a></td>
+				<td><a href="{% url 'delete_user' user.id %}">刪除</a></td>
+			</tr>
+		{% endfor %}
+	</table>
+</body>
+{% endblock content %}
