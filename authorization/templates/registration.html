@@ -4,12 +4,11 @@
   <title>Create Account</title>
 </head>
 <body>
-<form action="/auth/registration/" method="POST" name="form1">
+<form action="/activity/registration/" method="POST" name="form1">
 	{% csrf_token %}
-	<div> Enter account :<input type="text" name="account" /> </br></div>
-  <div> Enter password <input type="text" name="password" /> </br></div>
-  <div> Enter name <input type="text" name="name" /> </br></div>
-  <div> Enter line_id <input type="text" name="line_id" /> </br></div>
+	<div> Enter account :<input type="text" name="action_name" /> </br></div>
+  <div> Enter detail <input type="text" name="action_detail" /> </br></div>
+  <div> Enter enable <input type="text" name="enable" /> </br></div>
 	<div><input type="submit" value="Send"/> </br></div>
 	<div>receive data :{{mess}}</div>
 </form>

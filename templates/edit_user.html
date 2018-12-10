@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>編輯資料</title>
+</head>
+<body>
+<form action="" method="POST" name="form1">
+	{% csrf_token %}
+	<div> edit name : <input type="text" name="username" /> </br></div>
+  <div> Enter detail <input type="text" name="action_detail" /> </br></div>
+	<input type="submit" value="Send"/>
+  </div>
+	<div>receive data :{{mess}}</div>
+</form>
+</body>
+</html>

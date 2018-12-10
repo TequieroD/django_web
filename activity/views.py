@@ -26,21 +26,23 @@ def list(request):
 
 
 def registration(request):
-    try:
-        #check params
-        account_name = request.GET.get('account_name')
-        action_detail = request.GET.get('action_detail')
-        if account_name in [None,''] or action_detail in [None,'']:
-            message = 'Params invalid'
-            return render(request, 'result.html', locals())
+    if request.method == 'GET':
+        return render(request, 'registration.html')
 
-        time=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        add_account = classSummaryModel.objects.create(action_name=account_name,action_detail=action_detail,action_datetime=time,enable=True)
-        add_account.save()
-        message = 'create and save success'
-    except Exception as e:
-        message = e
-    return render(request, 'result.html', locals())
+    elif request.method == "POST":
+        try:
+            #check params
+            action_name = request.POST['action_name']
+            action_detail = request.POST['action_detail']
+            enable = request.POST['enable']
+
+            time=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            add_account = classSummaryModel.objects.create(action_name=action_name,action_detail=action_detail,action_datetime=time,enable=enable)
+            add_account.save()
+            message = 'create and save success'
+        except Exception as e:
+            message = e
+        return render(request, 'result.html', locals())
 
 def delete(request):
     try:
@@ -56,16 +58,21 @@ def delete(request):
         message = e
     return render(request, 'result.html', locals())
 
-def update(request):
-    try:
-        account_name = request.GET.get('account_name')
-        action_detail = request.GET.get('action_detail')
+def update(request, pk=None):
+    if request.method == 'GET':
+        users = classSummaryModel.objects.get(id=pk)
+        return render(request, 'edit_user.html', locals())
 
-        update_account = classSummaryModel.objects.get(name='jason')
-        update_account.account_name = account_name
-        update_account,account_name = action_detail
-        update_account.save()
-        message = 'update and save success'
-    except Exception as e:
-        message = e
-    return render(request, 'result.html', locals())
+    elif request.method == "POST":
+        try:
+            account_name = request.GET.get('account_name')
+            action_detail = request.GET.get('action_detail')
+
+            update_account = classSummaryModel.objects.get(name='jason')
+            update_account.account_name = account_name
+            update_account,account_name = action_detail
+            update_account.save()
+            message = 'update and save success'
+        except Exception as e:
+            message = e
+        return render(request, 'result.html', locals())

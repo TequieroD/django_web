@@ -20,6 +20,7 @@
 					<td>{{ user.action_detail }} </td>
 					<td>{{ user.action_datetime }} </td>
 					<td>{{ user.enable }} </td>
+					<td><a href="/activity/{{ user.id }}/update/">編輯</a></td>
 				</tr>
 			{% endfor %}
 		</table>
