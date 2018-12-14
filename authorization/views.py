@@ -4,6 +4,8 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
+from django.http import HttpResponseRedirect
+from django.contrib import auth
 # Create your views here.
 def greeting(request, name=None):
 	return render(request, "greeting.html", {"name": name})
@@ -58,3 +60,39 @@ class UserDeleteView(DeleteView):
     template_name = 'delete_user.html'
     context_object_name = 'user'
     success_url = reverse_lazy('users')
+
+def login(request):
+	if request.method == "GET":
+		if request.user.is_authenticated:
+			msg = "{name} are login.".format(name = request.user.username)
+		else:
+			msg = "You're not login."
+		return render(request, "login.html", {"msg": msg})
+	elif request.method == "POST":
+
+		username = request.POST.get('username', '')
+		password = request.POST.get('password', '')
+
+		user = auth.authenticate(username=username, password=password)
+
+		if user is not None and user.is_active:
+			auth.login(request, user)
+			return HttpResponseRedirect('/login_check')
+		else:
+			msg = "Login Failed."
+			return render(request, "login.html", {"msg": msg})
+
+def logout(request):
+	if request.user.is_authenticated:
+		msg = "{name} logout Successful.".format(name = request.user.username)
+		auth.logout(request)
+	else:
+		msg = "You're not login"
+	return render(request, "logout.html", {"msg": msg})
+		
+def loginCheck(request):
+	if request.user.is_authenticated:
+		msg = "{name} login Successful.".format(name = request.user.username)
+	else:
+		msg = "You're not login"
+	return render(request, "check_login.html", {"msg": msg})
