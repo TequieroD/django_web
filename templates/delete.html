@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>刪除資料</title>
+	</head>
+	<body>
+    <form action="." method="POST" name="form1">
+      {% csrf_token %}
+      <h1>是否刪除{{users.action_name}}的資料</h1>
+      <input type="submit" value="確定" name='confirm'/>
+    </form>
+    <form>
+      <input type="button" value="取消" onclick="history.back()">
+    </form>
+	</body>
+</html>

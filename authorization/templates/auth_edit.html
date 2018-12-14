@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>編輯 auth 資料</title>
+</head>
+<body>
+<form action="" method="POST" name="form1">
+	{% csrf_token %}
+	<div> edit account : <input type="text" name="account" /> </br></div>
+  <div> edit password <input type="text" name="password" /> </br></div>
+  <div> edit name : <input type="text" name="name" /> </br></div>
+  <div> edit Line ID <input type="text" name="line_id" /> </br></div>
+  <div> edit enable <input type="text" name="enable" /> </br></div>
+	<input type="submit" value="Send"/>
+  </div>
+</form>
+</body>
+</html>

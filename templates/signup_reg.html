@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Create Account</title>
+</head>
+<body>
+<form action="." method="POST" name="form1">
+	{% csrf_token %}
+	<div> Enter user_id :<input type="text" name="action_userId" /> </br></div>
+  <div> Enter class_id <input type="text" name="action_classId" /> </br></div>
+	<div><input type="submit" value="Send"/> </br></div>
+	<div>receive data :{{mess}}</div>
+</form>
+</body>
+</html>

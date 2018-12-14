@@ -21,13 +21,23 @@ from authorization import views as auth_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^login/', auth_views.login),
     url(r'^activity/summary/$', activity_views.summary),
     url(r'^activity/info/$', activity_views.info),
     url(r'^activity/registration/$', activity_views.registration),
-    url(r'^activity/delete/$', activity_views.delete),
-    url(r'^activity/(\w+)/update/$', activity_views.update),
+    url(r'^activity/([^/]+)/delete/$', activity_views.delete),
+    url(r'^activity/([^/]+)/signUpDelete/$', activity_views.signUpDelete),
+    url(r'^activity/([^/]+)/update/$', activity_views.update),
     #url(r'^activity/create/$', activity_views.create),
+    url(r'^activity/signuplist/$', activity_views.signUpList),
     url(r'^activity/list/$', activity_views.list),
+    url(r'^activity/signUpReg/$', activity_views.signUpReg),
+    url(r'^activity/([^/]+)/signUpUpdate/$', activity_views.signUpUpdate),
+
+    url(r'^auth/authList/$', auth_views.authList),
+    url(r'^auth/authReg/$', auth_views.authReg),
+    url(r'^auth/([^/]+)/authUpdate/$', auth_views.authUpdate),
+    url(r'^auth/([^/]+)/authDelete/$', auth_views.authDelete),
     url(r'^auth/create/$', auth_views.create_accont),
     url(r'^auth/listone/$', auth_views.listone),
 ]
