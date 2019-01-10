@@ -22,8 +22,8 @@ from authorization import views as auth_views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^login/', auth_views.login),
-    url(r'^activity/summary/$', activity_views.summary),
-    url(r'^activity/info/$', activity_views.info),
+    #url(r'^activity/summary/$', activity_views.summary),
+    #url(r'^activity/info/$', activity_views.info),
     url(r'^activity/registration/$', activity_views.registration),
     url(r'^activity/([^/]+)/delete/$', activity_views.delete),
     url(r'^activity/([^/]+)/signUpDelete/$', activity_views.signUpDelete),

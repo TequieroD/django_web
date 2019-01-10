@@ -116,6 +116,9 @@ def delete(request, pk=None):
 def update(request, pk=None):
     if request.method == 'GET':
         users = classSummaryModel.objects.get(id=pk)
+        action_name = users.action_name
+        action_detail = users.action_detail
+
         return render(request, 'edit_user.html', locals())
 
     elif request.method == "POST":

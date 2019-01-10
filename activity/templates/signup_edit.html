@@ -4,7 +4,7 @@
   <title>編輯資料</title>
 </head>
 <body>
-<form action="" method="POST" name="form1">
+<form action="/activity/{{ activity.id }}/signUpUpdate" method="POST" name="form1">
 	{% csrf_token %}
 	<div> edit User ID : <input type="text" name="action_userID" /> </br></div>
   <div> edit Class ID <input type="text" name="action_classID" /> </br></div>
